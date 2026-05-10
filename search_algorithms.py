@@ -53,6 +53,9 @@ def rabin_karp_search(text: str, pattern: str) -> int:
     m = len(pattern)
     n = len(text)
 
+    if m > n:
+        return -1
+
     pattern_hash = 0
     text_hash = 0
     h = 1
@@ -61,8 +64,6 @@ def rabin_karp_search(text: str, pattern: str) -> int:
         h = (h * base) % prime
 
     for i in range(m):
-        if len(pattern) > len(text):
-            return -1
         pattern_hash = (base * pattern_hash + ord(pattern[i])) % prime
         text_hash = (base * text_hash + ord(text[i])) % prime
 

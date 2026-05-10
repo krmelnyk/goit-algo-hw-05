@@ -1,6 +1,6 @@
 # main.py
 
-from benchmark import run_benchmarks
+from benchmark import find_fastest_algorithms, run_benchmarks
 
 
 def load_text(path):
@@ -18,6 +18,14 @@ def print_results(results):
         print()
 
 
+def print_fastest_algorithms(results):
+    fastest = find_fastest_algorithms(results)
+
+    print("Fastest algorithms:\n")
+    for scenario, algorithm_name in fastest.items():
+        print(f"  {scenario}: {algorithm_name}")
+
+
 if __name__ == "__main__":
     text1 = load_text("стаття 1.txt")
     text2 = load_text("стаття 2.txt")
@@ -33,3 +41,4 @@ if __name__ == "__main__":
     )
 
     print_results(results)
+    print_fastest_algorithms(results)
